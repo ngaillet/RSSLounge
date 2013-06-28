@@ -1538,6 +1538,22 @@ white-space: nowrap;
     div#prio{
         display: none;
     }
+#login {
+    position:absolute;
+    left:auto;
+    top:auto;
+    width:auto;
+    height:auto;
+    margin-left:auto;
+    font-size:14px;
+    background:url(images/header-bg.png) repeat-x;
+    border:1px solid #ccc;
+    
+    border-radius: 10px;
+    -o-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
 }
 
 @media (max-width:640px) and (orientation: landscape) {

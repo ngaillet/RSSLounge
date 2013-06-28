@@ -21,13 +21,18 @@ class Plugin_Authentication extends Zend_Controller_Plugin_Abstract {
         if($request->getControllerName()=='update' && $request->getActionName()=='silent')
             return;
         
+        if((bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPhone')) {
+                Zend_Registry::get('session')->authenticated = true;
+            return;
+        }
+        
         // show login
         if($request->getParam('login', false)!==false) {
             $request->setControllerName('index');
             $request->setActionName('login');
             return;
         }
-        
+
         // logout?
         if($request->getParam('logout', false)!==false) {
             Zend_Registry::get('session')->__unset('authenticated');
