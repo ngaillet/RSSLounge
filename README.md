@@ -11,7 +11,10 @@ Follow the original readme.txt instructions...
 ChangeLog
 ---------
 
-2013/06/27 :
+2013/06/28:
+- [x] Fixed iPhone5 web app mode
+- [x] Fixed no login required for iPhone mode 
+2013/06/27:
 - [x] Upgraded jQuery & deps
 - [x] Made fixed banner
 - [x] Added a "Mark All As Read" button on the bottom
