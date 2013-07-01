@@ -11,6 +11,9 @@ Follow the original readme.txt instructions...
 ChangeLog
 ---------
 
+2013/07/01:
+- [x] Fixed telephone recognition for feeds title with numbers only
+- [x] Added scrollTo top when click on the bottom "Mark All As Read" button
 2013/06/28:
 - [x] Fixed iPhone5 web app mode
 - [x] Fixed no login required for iPhone mode 

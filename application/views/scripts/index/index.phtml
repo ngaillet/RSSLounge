@@ -5,6 +5,7 @@
     
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="language" content="<?PHP echo Zend_Registry::get('session')->language ?>" />
+    <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="initial-scale=1.0">
     <meta name="viewport" content="width=320.1">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -115,7 +116,7 @@
             
                 <?PHP if(Zend_Registry::get('session')->authenticated===true) : ?>
                 <ul id="actions">
-                    <li><input type="button" value="<?PHP echo $this->translate('mark all as read'); ?>" id="markallb" /></li>
+                    <li><input type="button" value="<?PHP echo $this->translate('mark all as read'); ?>" id="markallb" onclick="JavaScript:window.scrollTo(0,1);" /></li>
                 </ul>
                 <?PHP endif; ?>
             </div>      
