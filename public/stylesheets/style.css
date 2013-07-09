@@ -101,53 +101,53 @@ div#extra {
 
 div#header {
     color:#fff;
-    height:48px;
-	margin-bottom:10px;
+    height:40px;
+    margin-bottom:10px;
         position: fixed;
         z-index: 5;
         width: 100%;
 }
 
     #header-left {
-    	position:absolute;
-		left:8px;
-		top:0;
+        position:absolute;
+        left:8px;
+        top:0;
         background:url(images/header-left.png);
-		height:48px;
-		width:46px;
-		z-index:1;
-	}
-	
-	#header-right {
+        height:40px;
+        width:0px;
+        z-index:1;
+    }
+    
+    #header-right {
         background:url(images/header-right.png);
-        height:48px;
-        width:37px; 
-		position:absolute;
+        height:40px;
+        width:0px; 
+        position:absolute;
         left:100%;
         top:0;
-		margin-left:-46px;
+        margin-left:-46px;
     }
-	
-	#header-content {
-		background:url(images/header-bg.png);
-		height:48px;
-		margin-left:20px;
-		margin-right:20px;
+    
+    #header-content {
+        background:url(images/header-bg.png);
+        height:40px;
+        margin-left:0px;
+        margin-right:0px;
     }
-		
+        
     body.ipad #header h1 {
-    	top:-1px;
-	}
-		
+        top:-1px;
+    }
+        
     #header h1 {
-    	position:absolute;
+        position:absolute;
         margin-left:30px;
-		margin-top:0;
-		top:0;
+        margin-top:0;
+        top:0;
         width:203px;
         height:62px;
         background:url(images/header.png) center top no-repeat;
-		z-index:200;
+        z-index:200;
     }
     
         body.small #header h1 {
@@ -177,13 +177,13 @@ div#header {
         }
     
         #slider {
-        	margin-top:-10px;
+            margin-top:-10px;
             height:8px;
             width:100%;
         }
         
             #slider .ui-slider-handle {
-            	font-size:14px;
+                font-size:14px;
                 width:1em;
                 height:1em;
             }
@@ -390,7 +390,7 @@ div#header {
     position:relative;
     margin-bottom:0;
     margin-top:6px;
-    height:20px;
+    height:26px;
 }
 
 #feedsmenue li {
@@ -417,22 +417,36 @@ div#header {
     }
     
     #feedsmenue .add {
+        margin-top:-4px;
         display:block;
-        border:2px solid #cccccc;
-        border-bottom:0;
-        width:130px;
+        border:1px solid rgba(0,0,0,0.1);
+        border-bottom-color:rgba(0,0,0,0.25);
+        text-shadow:0px -1px 0px rgba(0,0,0,0.25);
+        background-image: linear-gradient(rgb(251,180,80), rgb(248, 148,6));
+        background-repeat: repeat-x;
+        background-color: rgb(250,167,50);
+        cursor: pointer;
+        box-shadow: inset 0px 1px 0px rgba(255,255,255,0.2), 0px 1px 2px rgba(0,0,0,0.05);
+        color:#fff;
+        text-align:center;
+        width:90px;
         margin-left:20px;
-        background:url(images/icons.png) 1px -119px no-repeat;
-        padding:2px;
-        padding-top:0;
-        padding-left:35px;
+        padding:12px;
+        padding-top:4px;
+        padding-bottom:4px;
         
         border-top-right-radius:4px;
         border-top-left-radius:4px;
         -moz-border-radius-topleft:4px;
         -moz-border-radius-topright:4px;
         -webkit-border-top-right-radius:4px;
-        -webkit-border-top-left-radius:4px;
+        -webkit-border-top-left-radius:4px;        
+        border-bottom-right-radius:4px;
+        border-bottom-left-radius:4px;
+        -moz-border-radius-bottomleft:4px;
+        -moz-border-radius-bottomright:4px;
+        -webkit-border-bottom-right-radius:4px;
+        -webkit-border-bottom-left-radius:4px;
     }
     
         #feedsmenue .add:hover {
@@ -469,20 +483,11 @@ div#header {
 #feeds-list,
 #progress,
 #calendar {
-    border:2px solid #2e2e2e;
     padding:3px;
     padding-top:1px;
-    margin-left:15px;
-    margin-bottom:10px;
-
-    border-radius: 4px;
-    -o-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
 }
 
     #feeds-list li {
-        border-bottom:1px solid #DDDDDD;
     }
 
         /* big category buttons */
@@ -511,7 +516,7 @@ div#header {
             #feeds-list h3.active,
             #feeds-list h3:hover {
                 color:white;
-                background-color:#2e2e2e;
+                background-color:#7BA2B9
             }
             
             #feeds-list h3.starred {
@@ -636,7 +641,7 @@ div#header {
         #feeds-list .search {
             position:relative;
             margin-top:5px;
-            background-color:#2e2e2e;
+            background-color:#d4d4d4;
             padding:5px;
             padding-left:15px;
             border-radius: 5px;
@@ -657,7 +662,7 @@ div#header {
                 position:absolute;
                 top:6px;
                 left:100%;
-                margin-left:-40px;
+                margin-left:-30px;
             }
             
             #feeds-list .search  a span {
@@ -726,7 +731,7 @@ div.search a {
 #content {
     padding:10px;
     padding-top:6px;
-	padding-right:17px;
+    padding-right:17px;
 }
 
 #filter {
@@ -743,6 +748,7 @@ white-space: nowrap;
     
     #filter #actions {
         margin-left:10px;
+        margin-top: 4px;
     }
     
     body.small #filter #actions {
@@ -768,27 +774,13 @@ white-space: nowrap;
         }
     
     #filter #filter-options {
-        position:absolute;
-        left:100%;
-        margin-left:-480px;
-        width:480px;
-        
+        float:right;        
     }
     
     #filter #actions input {
-        border: 1px solid #ccc; 
         font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; 
         font-size: 1em;
         cursor:pointer;
-        color:#333;
-        background:#efefef;
-        border-radius: 4px;
-        -o-border-radius: 4px;
-        -moz-border-radius: 4px;
-        -webkit-border-radius: 4px;
-        padding:5px;
-        padding-top:2px;
-        padding-bottom:2px;
     }
     
         * + html #filter #actions input {
@@ -797,8 +789,8 @@ white-space: nowrap;
         }
     
         #filter #actions input:hover {
-            border-color:#fbcb09;
-            background: #fdf5ce;
+            color:#fff;
+            background-color: rgb(250,167,50);
         }
 
 /* ============ No Items ============ */
@@ -806,6 +798,7 @@ white-space: nowrap;
 #noentries {
     border:2px solid #BFBFBF;
     padding:10px;
+    margin-bottom: 4px;
     border-radius: 4px;
     -o-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -958,22 +951,33 @@ white-space: nowrap;
 /* ============ Messages ============ */
 
 #messages {
-    border:2px solid #BFBFBF;
     padding:0px;
     margin-bottom:10px;
-    border-radius: 4px;
-    -o-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
+    height:100%;
+    overflow: auto;
+    line-height: 20px;
+    min-height:100%;
+    position:relative;
 }
-
+#messages *,
+#messages *::before,
+#messages *::after {
+    box-sizing: border-box;
+}
     #messages > li {
         padding:6px;
         border-bottom:1px solid #ccc;
+        background-color: white;
     }
-    
+    #messages > li:first-child {
+        padding:6px;
+        border-top:1px solid #ccc;
+    }
+    #messages > li:hover {
+            background-color:#eee;
+        }
         #messages > li.unread {
-            background-color:#FFFBCF;
+
         }
         
         #messages > li.unread h2 {
@@ -985,19 +989,19 @@ white-space: nowrap;
             background:#eee;
             text-align:center;
             font-weight:bold;
+            display: block;
         }
 
         #messages > li.selected {
             padding:4px;
             padding-bottom:5px;
-            border:2px solid #f6a828;
         }
         
         #messages > li.selected.marking {
             border:0;
         }
         
-        #messages > li .link span{
+        #messages > li div > .link span{
             color:#999;
         }
     
@@ -1008,15 +1012,25 @@ white-space: nowrap;
         float:left;
         margin-right:3px;
     }
+
+
+    #messages li > div > img {
+        width:16px;
+        height:16px;
+    }
     
     #messages .starr-message,
     #messages .mark-message {
-        display:block;
+        display:inline-block;
         width:16px;
         height:16px;
         background:url(images/icons.png) -10px -713px no-repeat;
         float:left;
         margin-right:3px;
+    }
+    #messages .mark-message,
+    #messages li > div > img {
+        display: none;
     }
     
         #messages .rateup-message span,
@@ -1041,15 +1055,21 @@ white-space: nowrap;
     
     #messages li {
         position:relative;
-        padding-right:40px;
+        overflow: hidden;
+        display:block;
+        width: 100%;
     }
     
-    #messages li > span {
+    #messages li > div > span {
         display:inline-block;
+        white-space: nowrap;
         padding-right:5px;
         padding-left:5px;
-        border-right:1px solid #ccc;
-        border-left:1px solid #ccc;
+        float:right;
+        width: 85px;
+        text-align: right;
+        height: 100%;
+        font-size: 0.75em;
     }
     
     #messages span.found {
@@ -1058,35 +1078,42 @@ white-space: nowrap;
         border:0;
     }
     
-    #messages li > h2 {
-        display:inline;
+    #messages li > div > h2 {
         font-size:1em;
+        white-space: nowrap;
         cursor:pointer;
         font-weight:normal;
-    }
-
-    #messages li > img {
-        width:16px;
-        height:16px;
+        overflow:hidden;
+        text-overflow: ellipsis;
+        height: 100%;
     }
     
-    #messages > li > a {
+    #messages > li > div > a {
         font-size:0.8em;
+        vertical-align: middle;
+    }
+    #messages > li > div > a.link {
+        white-space: nowrap;
+        width:150px;
+        float:left;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display:inline-block;
     }
     
     #messages span.date {
         position:absolute;
         border:0;
         color:#999;
-        left:100%;
+        float:left;
         top:7px;
-        margin-left:-65px;
+        display: none;
     }
     
-        #messages > li.selected span.date {
-            top:5px;
-            margin-left:-63px;
-        }
+    #messages > li.selected span.date {
+        top:5px;
+        margin-left:-63px;
+    }
         
     #messages .content {
         padding:10px;
@@ -1468,6 +1495,7 @@ white-space: nowrap;
 /* ============ Footer ============ */
 
 #footer {
+    display:none;
     margin:20px;
     margin-top:10px;
     text-align:right;
@@ -1516,28 +1544,51 @@ white-space: nowrap;
         margin-top:15px;
     }
 
-/* Zebra Striping */
-#messages > li.unread:nth-of-type(even) {
-  background-color: #ebe0c6
+input[type=button]:hover{
+-webkit-appearance: none;
+            color:#fff;
+            background-color: rgb(250,167,50);
 }
+input[type=button]{
+-webkit-appearance: none;
+            margin-top:-4px;
+        display:block;
+        border:1px solid rgba(0,0,0,0.1);
+        border-bottom-color:rgba(0,0,0,0.25);
+        text-shadow:0px -1px 0px rgba(0,0,0,0.25);
+        background-image: linear-gradient(rgb(251,180,80), rgb(248, 148,6));
+        background-repeat: repeat-x;
+        background-color: rgb(250,167,50);
+        cursor: pointer;
+        box-shadow: inset 0px 1px 0px rgba(255,255,255,0.2), 0px 1px 2px rgba(0,0,0,0.05);
+        color:#fff;
+        text-align:center;
+
+        margin-left:20px;
+        padding:12px;
+        padding-top:4px;
+        padding-bottom:4px;
+        
+        border-top-right-radius:4px;
+        border-top-left-radius:4px;
+        -moz-border-radius-topleft:4px;
+        -moz-border-radius-topright:4px;
+        -webkit-border-top-right-radius:4px;
+        -webkit-border-top-left-radius:4px;        
+        border-bottom-right-radius:4px;
+        border-bottom-left-radius:4px;
+        -moz-border-radius-bottomleft:4px;
+        -moz-border-radius-bottomright:4px;
+        -webkit-border-bottom-right-radius:4px;
+        -webkit-border-bottom-left-radius:4px;
+    }
 
 @media (max-width: 640px) {
     body {
         -webkit-text-size-adjust: 90%;
     }
-    div#feeds{
-        display:none;
-    }
-    div#content{
-        padding-right: 10px;
-        margin-left: 0px;
-    }
-    a#menue-button{
-        display: none;
-    }
-    div#prio{
-        display: none;
-    }
+
+
 #login {
     position:absolute;
     left:auto;
@@ -1554,12 +1605,37 @@ white-space: nowrap;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
 }
+
+    div#feeds{
+        display:none;
+    }
+    div#content{
+        padding-right: 10px;
+        margin-left: 0px;
+    }
+    a#menue-button{
+        display: none;
+    }
+    div#prio{
+        display: none;
+    }
+
+    #messages > li > div > a.link {
+        display:none;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
 @media (max-width:640px) and (orientation: landscape) {
     div#filter-options{
-        width: 303px;
-        margin-left: -303px;
+        float: right;
+    }
+    #sort, #view, #sort-button, #view-button {
+        display:none;
     }
 }
 

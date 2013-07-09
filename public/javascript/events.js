@@ -680,7 +680,7 @@ rsslounge.events = {
     messages: function() {    
         // hide and show item content
         $('#messages h2:not(.opened)').unbind('click').click(function () {
-            var content = $(this).parent('li').children(".content");
+            var content = $(this).parent('div').parent('li').children(".content");
             content.slideToggle('medium');
             rsslounge.showImages(content);
         });

@@ -41,7 +41,7 @@ class Zend_View_Helper_Minifyjs {
         } else {
             $ret = "";
             foreach($javascripts as $js)
-                $ret = $ret . "<script type=\"text/javascript\" src=\"".$js."\"></script>\n";
+                $ret = $ret . "<script type=\"text/javascript\" src=\"".$js."?201307091518\"></script>\n";
             return $ret;
         }
     }

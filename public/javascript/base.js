@@ -408,7 +408,7 @@ if ($(this).attr('id') != null)
         if($(this).hasClass('starr-image'))
             var id = $(this).parent('div').attr('id').substr(5);
         else
-            var id = $(this).parent('li').attr('id').substr(5);
+            var id = $(this).parent('div').parent('li').attr('id').substr(5);
     
         $.ajax({
         type: "POST",
