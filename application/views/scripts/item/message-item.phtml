@@ -1,5 +1,5 @@
 <li id="item_<?PHP echo $this->id ?>" class="<?PHP echo $this->unread==1 ? 'unread' : '' ?>">
-    <div style="display:block">
+    <div style="display:block" id="title">
     <?PHP if(Zend_Registry::get('session')->authenticated===true) : ?>
     <a class="starr-message <?PHP echo $this->starred==1 ? 'active' : '' ?>" title="<?PHP echo $this->translate('starr') ?>"><span><?PHP echo $this->translate('starr') ?></span></a>
     <!--<a class="mark-message <?PHP echo $this->unread==1 ? 'active' : '' ?>"><span><?PHP echo $this->translate('mark as read') ?></span></a>-->
@@ -10,6 +10,7 @@
     <?PHP else : ?>
         <img src="<?PHP echo Zend_Registry::get('config')->favicons->url . $this->icon ?>" alt="<?PHP echo $this->name ?>" title="<?PHP echo $this->name ?>" width="16" height="16" />
     <?PHP endif; ?>-->
+
     <?PHP 
     $date = new Zend_Date($this->datetime, null, 'fr-FR');
     $today = new Zend_Date('en_US');
@@ -59,9 +60,19 @@
             $suffix = "years";
         break;
     }
+    if ($count <= 0)
+        $stringDate = 'Just now.';
+    else
+    {
     if ($count == 1)
+        {
+            if ($suffix == "hour")
+        $count = 'An';
+            else
         $count = 'A';
-    $stringDate = $count.' '.$suffix.' ago.';
+        }
+        $stringDate = $count.' '.$suffix.' ago.';
+    }
     ?>
     <span title="<?PHP echo $date->toString('d.MM.YYYY HH:mm'); ?>"><?PHP echo $stringDate; ?></span>
     <a href="<?PHP echo $this->link ?>" class="link">&raquo; <?PHP echo $this->name ?> </a>
@@ -73,6 +84,12 @@
     </h2>
 </div>
     <div class="content <?PHP echo Zend_Registry::get('session')->openitems!=1 ? 'closed' : '' ?>">
+    <h2 <?PHP echo Zend_Registry::get('session')->openitems==1 ? 'class="opened"' : '' ?>>
+        <?PHP 
+            $title = $this->highlite($this->title, Zend_Registry::get('search'));
+            echo strlen(trim($title))==0 ? '['.$this->translate('no title').']' : $title;
+        ?>
+    </h2>
         <?PHP 
             if(Zend_Registry::get('session')->openitems==1)
                 echo $this->highlite($this->content, Zend_Registry::get('search'));

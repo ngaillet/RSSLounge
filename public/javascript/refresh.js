@@ -28,6 +28,7 @@ rsslounge.refresh = {
     run: function() {
         // show progressbar
         $('#progress').show();
+        $('#progressb').show();
         
         // refresh feeds
         rsslounge.refresh.feeds = $('.feeds li');
@@ -60,9 +61,14 @@ rsslounge.refresh = {
             $('#progress-feed').html(
                 feed.find('.feed').html()
             );
+            // show feed in status div
+            $('#progress-feedb').html(
+                feed.find('.feed').html()
+            );
             
             // set progressbarvalue
             $('#progressbar').progressbar('option', 'value', ((index+1)/rsslounge.refresh.feeds.length)*100);
+            $('#progressbarb').progressbar('option', 'value', ((index+1)/rsslounge.refresh.feeds.length)*100);
 
             // send refresh
             var id = feed.attr('id').substr(5);
@@ -97,6 +103,7 @@ rsslounge.refresh = {
      finish: function() {
         // hide progress status
         $('#progress').hide();
+        $('#progressb').hide();
         
         // send finished to server
         $.ajax({
@@ -116,16 +123,8 @@ rsslounge.refresh = {
                 
                 // update category unread items
                 rsslounge.refreshCategories(response.categories);
-                
-                // show waring when icons was updated in this run
-                if(rsslounge.refresh.iconupdate) {
-                    rsslounge.showError(lang.icons_updated, true);
-                }
+        rsslounge.showError("Just finished refreshing...", true);
             }
         });
-     
-        
-        
-        
     }
 }

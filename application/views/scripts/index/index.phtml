@@ -17,10 +17,9 @@
 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="big-favicon.png" />
-    
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.min.css" />
     <?PHP
         echo $this->minifycss( array(
-            "stylesheets/jquery-ui-1.8.9.custom.css",
             "stylesheets/datepicker.css",
             "stylesheets/impromptu.css",
             "stylesheets/jquery.jgrowl.min.css",
@@ -29,26 +28,46 @@
             "stylesheets/style.css"
         ));
     ?>
+    <link rel="stylesheet" media="screen, handheld, projection, tv" href="stylesheets/snap.css?2013071645" />
 </head>
 
-<body class="<?PHP echo ($this->isIpad) ? 'ipad' : ''; ?>">
-<div id="container">
-    
+<body class="snapjs-left <?PHP echo ($this->isIpad) ? 'ipad' : ''; ?>">
+<div id="Menu" class="snap-drawers">
+        <!-- feed list -->
+        <ul id="feeds-list">
+            <?PHP echo $this->render("index/feedlist." . Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer')->getViewSuffix()); ?>
+        </ul>
+        <!-- progressbar -->
+        <div id="progress">
+            <div id="progress-feed"></div>
+            <div id="progressbar"></div>
+        </div>
+        
+        <!-- stats -->
+        <ul id="stats">
+            <li><?PHP echo $this->translate('all items'); ?> <span class="all"><?PHP echo $this->all; ?></span></li>
+            <li><?PHP echo $this->translate('unread items'); ?> <span class="unread"><?PHP echo $this->unread; ?></span></li>
+            <li><?PHP echo $this->translate('read items'); ?> <span class="read"><?PHP echo $this->read; ?></span></li>
+            <li><?PHP echo $this->translate('feeds'); ?> <span class="feeds"><?PHP echo $this->amountfeeds; ?></span></li>
+        </ul>
+</div>
     <!-- header -->
-    <div id="header">
+    <div id="header" style="top:0px;">
         <div id="header-left"></div>
         <div id="header-content">
-	        <h1><span>rssLounge aggregator</span></h1>
-	        
-	        <div id="prio">
-	            <label><?PHP echo $this->translate('Priority'); ?>: <span></span></label>
-	            <div id="slider"></div>
-	        </div>
-	        
-	        <a id="menue-button"><span><?PHP echo $this->translate('main menue'); ?></span></a>
+            <h1 onclick="window.location = '/'"><span>rssLounge aggregator</span></h1>
+            
+            <div id="prio">
+                <label><?PHP echo $this->translate('Priority'); ?>: <span></span></label>
+                <div id="slider"></div>
+            </div>
+            
+            <a id="menue-button"><span><?PHP echo $this->translate('main menue'); ?></span></a>
         </div>
         <div id="header-right"></div>
     </div>
+<div id="container" class="snap-content">
+    
     
     <!-- main menue -->
     <ul id="menue" class="ui-corner-all ui-widget-content">
@@ -155,9 +174,9 @@
         
         
         <!-- progressbar -->
-        <div id="progress">
-            <div id="progress-feed"></div>
-            <div id="progressbar"></div>
+        <div id="progressb">
+            <div id="progress-feedb"></div>
+            <div id="progressbarb"></div>
         </div>
         
         <!-- stats -->
@@ -181,11 +200,10 @@
         icons by <a href="http://dryicons.com/">dryicons.com</a>
     </div>
 </div>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> 
 <?PHP
     echo $this->minifyjs( array(
-        "javascript/jquery-1.9.1.js",
-        "javascript/jquery-ui-1.10.3.custom.min.js",
         "javascript/addtouch.js",
         "javascript/datepicker.js",
         "javascript/jquery-impromptu.2.8.min.js",
@@ -201,10 +219,17 @@
         "javascript/locale/" . Zend_Registry::get('session')->language . ".js"
     ));
     
-?>    
+?>
+<script type="text/javascript" src="javascript/snap.min.js?201307101630"></script>
 <script type="text/javascript">
     rsslounge.settings = <?PHP echo Zend_Json::encode(Zend_Registry::get('session')->getIterator()) ?>;
-    rsslounge.init('<?PHP echo $this->newfeed ?>');       
+    rsslounge.init('<?PHP echo $this->newfeed ?>');    
+    if ($('#Menu').css('display') === 'block') {
+        var snapper = new Snap({
+            element: document.getElementById('container')
+        });
+    }
 </script>
+
 </body>
 </html>

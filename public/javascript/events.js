@@ -294,6 +294,9 @@ rsslounge.events = {
         $("#progressbar").progressbar({
             value: 0
         });
+        $("#progressbarb").progressbar({
+            value: 0
+        });
 
     },
     
