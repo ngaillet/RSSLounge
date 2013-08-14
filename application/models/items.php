@@ -209,14 +209,10 @@ class application_models_items extends application_models_base {
      * @return void
      * @param array $ids
      */
+
     public function markAsRead($ids) {
         $p = Zend_Registry::get('config')->resources->db->prefix;
-        $sql = "UPDATE ".$p."items SET unread=0 WHERE 1=0";
-        
-        foreach($ids as $id) {
-            if(is_numeric($id))
-                $sql = $sql . " OR id=" . ((int)$id);
-        }
+        $sql = "UPDATE ".$p."items SET unread=0 WHERE id IN (".join(',',$ids).")";
         $this->getAdapter()->query($sql);
     }
     

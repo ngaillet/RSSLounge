@@ -686,6 +686,44 @@ rsslounge.events = {
             var content = $(this).parent('div').parent('li').children(".content");
             content.slideToggle('medium');
             rsslounge.showImages(content);
+            
+            if($(this).parent('div').parent('li').hasClass('unread')) {
+                // clone settings
+                var settings = jQuery.extend(true, {}, rsslounge.settings);
+                settings.view = 'messages';
+                settings.id = $(this).parent('div').parent('li').attr('id').substr(5);
+                settings.items = $('#messages').children().length - 1;
+                
+                var message = $(this);
+                    
+                // mark message as read
+                $.ajax({
+                type: "POST",
+                url: "item/mark",
+                data: settings,
+                dataType: 'json',
+                success: function(response){
+                        // error
+                        if(typeof response.error != 'undefined')
+                            rsslounge.showError(response.error);
+                        
+                        // success
+                        else {
+                            // update feed unread items
+                            rsslounge.refreshFeeds(response.feeds);
+                        
+                            // update category unread items
+                            rsslounge.refreshCategories(response.categories);
+                            
+                            // refresh starred items
+                            $('#feeds-list h3.starred').find('.items').html(response.starred);
+                        }
+                    }
+                });
+                
+                $(this).parent('div').toggleClass('active');
+                $(this).parent('div').parent('li').toggleClass('unread');
+            }
         });
         
         $('#messages li').unbind('click').click(function () {

@@ -11,12 +11,16 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
 <!-- iPhone 4 Retina -->
     <link href="apple-touch-startup-image-640x920.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <link href="apple-touch-startup-image-920x640.png" media="(device-width:320px) and (device-height:480px) and (-webkit-device-pixel-ratio:2) and orientation:landscape" rel="apple-touch-startup-image">
 <!-- iPhone 5 -->
     <link href="apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-
-
+    <link href="apple-touch-startup-image-1096x640.png" media="device-width:320px and device-height:568px and -webkit-device-pixel-ratio:2 and orientation:landscape" rel="apple-touch-startup-image">
+    
+<link rel="apple-touch-icon" href="apple-touch-icon-57x57.png" /> 
+<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png" /> 
+<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="big-favicon.png" />
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.min.css" />
     <?PHP
         echo $this->minifycss( array(
@@ -32,6 +36,7 @@
 </head>
 
 <body class="snapjs-left <?PHP echo ($this->isIpad) ? 'ipad' : ''; ?>">
+<div id="landscape"><p><b>Rotate Device to Portrait</b></p></div>
 <div id="Menu" class="snap-drawers">
         <!-- feed list -->
         <ul id="feeds-list">
@@ -55,7 +60,7 @@
     <div id="header" style="top:0px;">
         <div id="header-left"></div>
         <div id="header-content">
-            <h1 onclick="window.location = '/'"><span>rssLounge aggregator</span></h1>
+            <h1 onclick="location.reload();"><span>rssLounge aggregator</span></h1>
             
             <div id="prio">
                 <label><?PHP echo $this->translate('Priority'); ?>: <span></span></label>
@@ -66,35 +71,8 @@
         </div>
         <div id="header-right"></div>
     </div>
-<div id="container" class="snap-content">
-    
-    
-    <!-- main menue -->
-    <ul id="menue" class="ui-corner-all ui-widget-content">
-        <?PHP if(Zend_Registry::get('session')->authenticated===true) : ?>
-            <li><a class="settings"><?PHP echo $this->translate('Settings'); ?></a></li>
-            <li><a class="categories"><?PHP echo $this->translate('Categories'); ?></a></li>
-            <li><a id="opml-import"><?PHP echo $this->translate('OPML Import'); ?></a></li>
-            <li><a id="opml-export"><?PHP echo $this->translate('OPML Export'); ?></a></li>
-            <li><a id="errormessages"><?PHP echo $this->translate('Errormessages'); ?></a></li>
-        <?PHP endif; ?>
-            <li class="<?PHP if(!isset($this->logout) && !isset($this->login)) echo 'last'; ?>"><a class="about"><?PHP echo $this->translate('About'); ?></a></li>
-        
-        <?PHP if(isset($this->logout)) : ?>
-            <li class="last"><a class="logout"><?PHP echo $this->translate('Logout'); ?></a></li>
-        <?PHP endif; ?>
-        
-        <?PHP if(isset($this->login)) : ?>
-            <li class="last"><a class="login"><?PHP echo $this->translate('Login'); ?></a></li>
-        <?PHP endif; ?>
-    </ul>
-    
-    
-    <!-- main area -->
-    <div id="wrapper">
-        <div id="content">
-            
-            <!-- top filter settings -->
+
+    <!-- top filter settings -->
             <div id="filter">
             
                 <?PHP if(Zend_Registry::get('session')->authenticated===true) : ?>
@@ -125,20 +103,40 @@
                 </div>
             </div>
             
+<div id="container" class="snap-content">
+    
+    
+    <!-- main menue -->
+    <ul id="menue" class="ui-corner-all ui-widget-content">
+        <?PHP if(Zend_Registry::get('session')->authenticated===true) : ?>
+            <li><a class="settings"><?PHP echo $this->translate('Settings'); ?></a></li>
+            <li><a class="categories"><?PHP echo $this->translate('Categories'); ?></a></li>
+            <li><a id="opml-import"><?PHP echo $this->translate('OPML Import'); ?></a></li>
+            <li><a id="opml-export"><?PHP echo $this->translate('OPML Export'); ?></a></li>
+            <li><a id="errormessages"><?PHP echo $this->translate('Errormessages'); ?></a></li>
+        <?PHP endif; ?>
+            <li class="<?PHP if(!isset($this->logout) && !isset($this->login)) echo 'last'; ?>"><a class="about"><?PHP echo $this->translate('About'); ?></a></li>
+        
+        <?PHP if(isset($this->logout)) : ?>
+            <li class="last"><a class="logout"><?PHP echo $this->translate('Logout'); ?></a></li>
+        <?PHP endif; ?>
+        
+        <?PHP if(isset($this->login)) : ?>
+            <li class="last"><a class="login"><?PHP echo $this->translate('Login'); ?></a></li>
+        <?PHP endif; ?>
+    </ul>
+    
+    
+    <!-- main area -->
+    <div id="wrapper">
+        <div id="content">
+            
+            
             
             <div id="items">
                 <?PHP echo $this->render("item/list." . Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer')->getViewSuffix()); ?>
             </div>
                   
-            <!-- top filter settings -->
-            <div id="filter">
-            
-                <?PHP if(Zend_Registry::get('session')->authenticated===true) : ?>
-                <ul id="actions">
-                    <li><input type="button" value="<?PHP echo $this->translate('mark all as read'); ?>" id="markallb" onclick="JavaScript:window.scrollTo(0,1);" /></li>
-                </ul>
-                <?PHP endif; ?>
-            </div>      
         </div>
     </div>
     
@@ -224,12 +222,59 @@
 <script type="text/javascript">
     rsslounge.settings = <?PHP echo Zend_Json::encode(Zend_Registry::get('session')->getIterator()) ?>;
     rsslounge.init('<?PHP echo $this->newfeed ?>');    
-    if ($('#Menu').css('display') === 'block') {
-        var snapper = new Snap({
-            element: document.getElementById('container')
-        });
-    }
-</script>
 
+
+var snapper = new Snap({
+  element: document.getElementById('container'),
+  slideIntent: 20,
+  maxPosition: 200,
+  minPosition: 0
+});
+
+$(window).scroll(function(){
+	if($(window).scrollTop()==$(document).height() - $(window).height()){
+		if($("li.more").length>0){
+			$("li.more").each(function(i){this.click(); return false;});
+		}
+	}
+});
+    // Listen for resize changes
+    window.addEventListener("resize", function() {
+ 
+          if( window.outerWidth > window.outerHeight )
+          {
+              window.scrollTo(1,1);
+              $('#landscape').show();
+//              lockScroll();
+          }
+          else{
+               $('#landscape').hide();
+//               unLockScroll();
+          }
+ 
+ }, false);
+function lockScroll()
+{
+     $(document).bind("touchmove",function(event){
+                        event.preventDefault();
+     });
+}
+ 
+function unLockScroll()
+{
+    $(document).unbind("touchmove");
+}
+</script>
+<!--<script src='javascript/jquery.pull-to-refresh.js'></script>
+    <script>
+      $(document).ready(function(){
+        $('#wrapper').pull_to_refresh({
+          refresh: function(stoploading){
+            	location.reload();
+		stoploading();
+          }
+        });
+      });
+    </script>-->
 </body>
 </html>

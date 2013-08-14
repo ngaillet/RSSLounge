@@ -41,7 +41,7 @@ class Zend_View_Helper_Minifycss {
         } else {
             $ret = "";
             foreach($stylesheets as $css)
-                $ret = $ret . "<link rel=\"stylesheet\" media=\"screen, handheld, projection, tv\" href=\"".$css."?201307101100\" />\n";
+                $ret = $ret . "<link rel=\"stylesheet\" media=\"screen, handheld, projection, tv\" href=\"".$css."?201308131116\" />\n";
             return $ret;
         }
     }
