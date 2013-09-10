@@ -11,15 +11,19 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
 <!-- iPhone 4 Retina -->
     <link href="apple-touch-startup-image-640x920.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-    <link href="apple-touch-startup-image-920x640.png" media="(device-width:320px) and (device-height:480px) and (-webkit-device-pixel-ratio:2) and orientation:landscape" rel="apple-touch-startup-image">
 <!-- iPhone 5 -->
     <link href="apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-    <link href="apple-touch-startup-image-1096x640.png" media="device-width:320px and device-height:568px and -webkit-device-pixel-ratio:2 and orientation:landscape" rel="apple-touch-startup-image">
+<!-- iPad (portrait) -->
+    <link rel="apple-touch-startup-image" media="(device-width: 768px) and (orientation: portrait)" href="apple-touch-startup-image-768x1004.png">
+<!-- iPad (landscape) -->
+    <link rel="apple-touch-startup-image" media="(device-width: 768px) and (orientation: landscape)" href="apple-touch-startup-image-748x1024.png">
+
     
-<link rel="apple-touch-icon" href="apple-touch-icon-57x57.png" /> 
-<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png" /> 
-<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon-57x57.png" /> 
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png" /> 
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png" />
+
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.min.css" />
     <?PHP
@@ -29,7 +33,9 @@
             "stylesheets/jquery.jgrowl.min.css",
             "stylesheets/tipsy.css",
             "stylesheets/ui.selectmenu.css",
-            "stylesheets/style.css"
+            "stylesheets/style.css",
+	    "stylesheets/style_iPhone.css",
+	    "stylesheets/style_iPad.css"
         ));
     ?>
     <link rel="stylesheet" media="screen, handheld, projection, tv" href="stylesheets/snap.css?2013071645" />
@@ -226,9 +232,13 @@
 
 var snapper = new Snap({
   element: document.getElementById('container'),
+  disable: 'right',
+  hyperextensible: false,
+  tapToClose:true,
   slideIntent: 20,
   maxPosition: 200,
-  minPosition: 0
+  minPosition: 0,
+  slideIntent: 20
 });
 
 $(window).scroll(function(){
@@ -241,15 +251,15 @@ $(window).scroll(function(){
     // Listen for resize changes
     window.addEventListener("resize", function() {
  
-          if( window.outerWidth > window.outerHeight )
+          if( window.outerWidth > window.outerHeight && $(window).height() < 481)
           {
               window.scrollTo(1,1);
               $('#landscape').show();
-//              lockScroll();
+              lockScroll();
           }
           else{
                $('#landscape').hide();
-//               unLockScroll();
+               unLockScroll();
           }
  
  }, false);

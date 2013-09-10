@@ -1,0 +1,132 @@
+@media (max-width: 480px) {
+
+    body {
+        -webkit-text-size-adjust: 90%;
+	font-family:Helvetica Neue, sans-serif;
+    }
+.search {
+	display:none;
+}
+#container {
+	background-color:#fff;
+}
+#login {
+    position:absolute;
+    left:auto;
+    top:auto;
+    width:auto;
+    height:auto;
+    margin-left:auto;
+    font-size:14px;
+    background:url(images/header-bg.png) repeat-x;
+    border:1px solid #ccc;
+    
+    border-radius: 10px;
+    -o-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+#header-content{
+	background:white;
+}
+    div.content{
+	margin-top:40px;
+    }
+    div#feeds{
+        display:none;
+    }
+    div#content{
+        padding-right: 10px;
+        margin-left: 0px;
+    }
+    a#menue-button{
+        display: none;
+    }
+    div#prio{
+        display: none;
+    }
+
+    #messages > li > div > a.link {
+	width: 60%;
+    }
+
+    #messages > li > div > h2 {
+	float:left;
+	width:100%;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    div#Menu {
+        padding-top:39px;
+	width:200px;
+        height:100%;
+	position:fixed;
+        float:left;
+        display:block !important;
+    }
+    div#container {
+        left:0px;
+        top:0px;
+        width:100%;
+    }
+            #feeds-list .search  input {
+                width:140px;
+            }
+    body.small #header h1{
+	margin-left:0px;
+	width:100%;
+	height:55px;
+    	background:url('images/header.png?2') center top no-repeat;
+    }
+    div#filter-options{
+        display:none;
+    }
+    #noentries {
+	border-bottom-color:#ccc;
+	line-height:20px;
+	border-top-width:0px;
+	border-left-width:0px;
+	border-right-width:0px;
+	border-bottom-width:1px;
+	min-height:20px;
+    }
+    #filter {
+	position:fixed;
+	bottom:0px;
+    	z-index:200;
+	background:url('images/footer.png') center top no-repeat;
+	height:40px;
+	width:100%;
+	left:0px;
+    }
+    #filter #actions {
+	margin-top:14px;
+	width:100%;
+	margin-left:0px;
+    }
+    input[type=button] {
+	background:url('images/button.png') center top;
+	border-top-color:rgb(233, 82, 82);
+	border-bottom-color:rgb(52,10,10);
+	border-left-color:rgb(233,82,82);
+	border-right-color:rgb(52,10,10);
+    }
+	#feeds-list {
+	padding-top:12px;
+}
+}
+@media only screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+    body.small #header h1 {
+	background:url("images/header@2x.png") center top no-repeat;
+	background-size: 320px 55px;
+    }
+    input[type=button] {
+	background:url('images/button@2x.png') center top no-repeat;
+	background-size: 226px 37px;
+    }
+}

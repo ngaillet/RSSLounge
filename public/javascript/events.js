@@ -258,18 +258,18 @@ rsslounge.events = {
         //
         
         
-        $('#search').unbind('keydown').keydown(function(e) {
+        $('div#container > div#feeds > ul#feeds-list > li.search > #search').unbind('keydown').keydown(function(e) {
             if(e.which==13)
                 $('#feeds-list .search a').click();
         });
         
         $('#feeds-list .search a').unbind('click').click(function() {
-            // set search remove button
-            $('div.search .search-term').html($('#search').val());
+	// set search remove button
+            $('div.search .search-term').html($('div#container > div#feeds > ul#feeds-list > li.search > #search').val());
             $('div.search').show();
             
             // execute search
-            rsslounge.settings.search = $('#search').val();
+            rsslounge.settings.search = $('div#container > div#feeds > ul#feeds-list > li.search > #search').val();
             rsslounge.refreshList();
         });
         

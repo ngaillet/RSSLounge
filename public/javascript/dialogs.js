@@ -126,7 +126,7 @@ rsslounge.dialogs = {
         //
         // add edit
         //
-        if(button==1) {
+        if(arguments[1]==1) {
         
             $('.jqibuttons').addClass('loading');
             
@@ -191,7 +191,7 @@ rsslounge.dialogs = {
         //
         // delete
         //
-        if(button==3) {
+        if(arguments[1]==3) {
             
             if(confirm(lang.really_delete_this_feed)==false) {
                 rsslounge.dialogs.sending = false;
